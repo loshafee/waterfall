@@ -1,0 +1,24 @@
+{
+  "name": "waterfall",
+  "version": "0.0.1",
+  "description": "Javascript 瀑布流效果",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loshafee/waterfall.git"
+  },
+  "keywords": [
+    "javascript",
+    "waterfall",
+    "lazyload"
+  ],
+  "author": "loshafee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loshafee/waterfall/issues"
+  },
+  "homepage": "https://github.com/loshafee/waterfall#readme"
+}

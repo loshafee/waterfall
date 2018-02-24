@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 2000px;
+        }
+        #box > div {
+            height: 200px;
+            width: 100px;
+            border: 10px solid red;
+            margin: 10px 3px;
+        }
+        #box > div:nth-child(1) {
+            height: 40px
+        }
+        #box > div:nth-child(2) {
+            height: 240px
+        }
+        #box > div:nth-child(3) {
+            height: 50px
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div>item1</div>
+        <div>item2</div>
+        <div>item3</div>
+        <div>item4</div>
+        <div>item5</div>
+        <div>item6</div>
+        <div>item7</div>
+        <div>item8</div>
+        <div>item9</div>
+        <div>item10</div>
+    </div>
+    <script src="../lib/waterfall.js"></script>
+    <script>
+        waterfall({
+            container: '#box',
+            cols: 3
+        })
+    </script>
+</body>
+</html>
