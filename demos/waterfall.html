@@ -6,14 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        * {
+            margin: 0 auto;
+        }
         #box {
-            height: 2000px;
         }
         #box > div {
             height: 200px;
             width: 100px;
             border: 10px solid red;
-            margin: 10px 3px;
+            margin: 10px 12px 10px 12px;
         }
         #box > div:nth-child(1) {
             height: 40px
@@ -43,7 +45,7 @@
     <script>
         waterfall({
             container: '#box',
-            cols: 3
+            cols: 4
         })
     </script>
 </body>
