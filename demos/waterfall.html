@@ -50,73 +50,25 @@
         <div>item18</div>
     </div>
     <script type="text/template" id="waterfall-tpl">
-    {{#result}}
+    {{#results}}
         <div class="item">
             <img src="{{image}}" width="{{width}}" height="{{height}}" />
+            <span>
+                name: {{name}} -
+                age: {{age}}
+            </span>
         </div>
-    {{/result}}
-    {{obj.name}}
-    {{count}}
+    {{/results}}
     </script>
     <script src="../lib/waterfall.js"></script>
     <script>
         waterfall({
             container: '#box',
-            cols: 4,
-            path: '/demos/users.json'
+            cols: 3,
+            path: '/demos/users.json',
+            dataType: 'json',
+            template: document.getElementById('waterfall-tpl')
         })
-    </script>
-    <script>
-        var tpl = document.getElementById('waterfall-tpl').textContent.trim()
-        var outerReg = /{{#\s*(.*?)\s*}}((.|\s)*){{\/\s*\1\s*}}/g
-        var innerReg = /{{\s*(.*?)\s*}}/g
-        var view = {
-            result: [{
-                image: '1.png',
-                width: 50,
-                height: 120
-            }, {
-                image: '2.png',
-                width: 50,
-                height: 120
-            }],
-            obj: {
-                name: 'xuefei'
-            },
-            count: 10
-        }
-        class Template {
-            constructor () {
-
-            }
-            render (tpl, view) {
-                var outerReg = /{{#\s*(.*?)\s*}}((.|\s)*){{\/\s*\1\s*}}/g            
-                var innerReg =/{{\s*(.*?)\s*}}/g
-                tpl.replace(outerReg, function (match, $1, $2) {
-                    if (view[$1]) {
-                        if (Array.isArray(view[$1])) {
-                            return view[$1].map(function (item) {
-                                return $2.trim().replace(innerReg, function (match, $1) {
-                                    return item[$1] || ''
-                                })
-                            }).join('')
-                        }
-                        return $2.trim().replace(innerReg, function (match, $1) {
-                            return view[$1] || ''
-                        })
-                    } else {
-                        return ''
-                    }
-                    console.log(match, $1, $2)
-                })
-                .trim()
-                .replace(innerReg, function (match, $1) {
-                    return $1.split('.').reduce((result, item) => {
-                        return result[item]
-                    }, view) || ''
-                })
-            }
-        }
     </script>
 </body>
 </html>
