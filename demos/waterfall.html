@@ -65,9 +65,23 @@
         waterfall({
             container: '#box',
             cols: 3,
-            path: '/demos/users.json',
+            maxPage: 3,
+            path: function (curPage) {
+                return '/demos/users.json?page=' + curPage
+            },
             dataType: 'json',
-            template: document.getElementById('waterfall-tpl')
+            template: document.getElementById('waterfall-tpl'),
+            callbacks: {
+                loadingStart: function () {
+                    console.log('ajax request ...')
+                },
+                loadingFinished: function (res) {
+                    console.log('ajax response', res)
+                },
+                loadingError: function (error) {
+                    console.log(error)
+                }
+            }
         })
     </script>
 </body>
