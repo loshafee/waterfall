@@ -12,10 +12,14 @@
         #box {
         }
         #box > div {
-            height: 200px;
+            min-height: 200px;
             width: 100px;
             border: 10px solid red;
             margin: 5%;
+        }
+        * img {
+            display: block;
+            width: 100%;
         }
         #box > div:nth-child(1) {
             height: 40px
@@ -52,7 +56,7 @@
     <script type="text/template" id="waterfall-tpl">
     {{#results}}
         <div class="item">
-            <img src="{{image}}" width="{{width}}" height="{{height}}" />
+            <img data-src="{{url}}" width="{{width}}" height="{{height}}" />
             <span>
                 name: {{name}} -
                 age: {{age}}
@@ -67,6 +71,11 @@
             itemClass: 'item',
             cols: 3,
             maxPage: 3,
+            preloadImage: true,
+            preloadPercent: function (state) {
+                console.log('图片已加载' + state.current/state.total)
+                console.log(state)
+            },
             path: function (curPage) {
                 return '/demos/users.json?page=' + curPage
             },
