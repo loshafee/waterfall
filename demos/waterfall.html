@@ -18,6 +18,7 @@
             min-height: 120px;
             width: 300px;
             border: 1px solid red;
+            margin: 40px;
         }
         * img {
             display: block;
@@ -30,7 +31,7 @@
     </style>
 </head>
 <body>
-    <div id="box">           
+    <div id="box">
     </div>
     <script type="text/template" id="waterfall-tpl">
     {{#results}}
@@ -50,6 +51,8 @@
             itemClass: 'item',
             cols: 3,
             maxPage: 6,
+            gutterWidth: 15,
+            gutterHeight: 20,
             gutterType: 'space-around',
             preloadImage: true,
             preloadPercent: function (state) {
