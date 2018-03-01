@@ -10,13 +10,19 @@
             margin: 0;
             padding: 0;
         }
+        h1 {
+            margin: 20px 0;
+            font-size: 18px;
+            font-family: "Microsoft Yahei";
+            font-weight: normal;
+            text-align: center;
+        }
         #box {
             width: 90%;
-            margin: 0 auto;
+            margin: 20px auto;
         }
         #box > div {
             min-height: 120px;
-            margin: 40px;
         }
         * img {
             display: block;
@@ -173,6 +179,9 @@
     </style>
 </head>
 <body>
+    <h1>
+        瀑布流 WaterFall
+    </h1>
     <div id="box">
     </div>
     <div id="mask">
@@ -202,7 +211,7 @@
             itemClass: 'item', // 子项className
             cols: 3, // 瀑布流列数
             maxPage: 6, // 请求的最大次数
-            gutterWidth: 15, // 水平间隔
+            gutterWidth: 10, // 水平间隔
             gutterHeight: 20, // 竖直间隔
             gutterType: 'space-around', // 水平空白的类型，'space-between'，'space-around'，默认'space-between'
             defaultImage: './imgs/default.jpg', // 图片加载失败替换图片

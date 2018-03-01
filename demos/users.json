@@ -2,26 +2,42 @@
     "results": [{
         "name": "Tom",
         "age": 20,
-        "url": "/demos/imgs/1.jpg"
+        "url": "./imgs/1.jpg"
     }, {
         "name": "Jack",
         "age": 22,
-        "url": "/demos/ims/2.jpg"
+        "url": "./ims/2.jpg"
     },{
         "name": "Marry",
         "age": 16,
-        "url": "/demos/imgs/3.jpg"
+        "url": "./imgs/3.jpg"
     }, {
         "name": "Terry",
         "age": 21,
-        "url": "/demos/imgs/4.jpg"
+        "url": "./imgs/4.jpg"
     },{
         "name": "Hanmeimei",
         "age": 16,
-        "url": "/demos/imgs/5.jpg"
+        "url": "./imgs/5.jpg"
     }, {
         "name": "Lilei",
         "age": 26,
-        "url": "/demos/imgs/6.jpg"
+        "url": "./imgs/6.jpg"
+    }, {
+        "name": "Lucy",
+        "age": 22,
+        "url": "./imgs/7.jpg"
+    }, {
+        "name": "Amay",
+        "age": 21,
+        "url": "./imgs/8.jpg"
+    }, {
+        "name": "David",
+        "age": 26,
+        "url": "./imgs/1.jpg"
+    }, {
+        "name": "Michiled",
+        "age": 23,
+        "url": "./imgs/2.jpg"
     }]
 }
