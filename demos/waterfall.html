@@ -189,11 +189,9 @@
     <script type="text/template" id="waterfall-tpl">
     {{#results}}
         <div class="item">
-            <img src="{{url}}" width="{{width}}" height="{{height}}" />
-            <span>
-                name: {{name}} -
-                age: {{age}}
-            </span>
+            <img src="{{url}}" />
+            <p>name: {{name}}</p>
+            <p>age: {{age}}</p>
         </div>
     {{/results}}
     </script>
@@ -220,7 +218,7 @@
                 })
             },
             path: function (curPage) { // fetch 请求地址
-                return '/demos/users.json?page=' + curPage
+                return './users.json?page=' + curPage
             },
             template: document.getElementById('waterfall-tpl'), // 瀑布流每项的模板
             callbacks: { // fetch 请求的回调情况
