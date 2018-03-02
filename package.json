@@ -1,5 +1,5 @@
 {
-  "name": "waterfall",
+  "name": "fetch-waterfall",
   "version": "0.0.1",
   "description": "Javascript waterfall effection with images preloader",
   "main": "index.js",

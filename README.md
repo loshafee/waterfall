@@ -1,46 +1,65 @@
 # waterfall
-Javascript 瀑布流效果
+Javascript waterfall effection with images preloader
+
+## Installation && Usage
+Browser
+
+In a browser, you can use `fetch-waterfall` as follows:
+
+    <script src='./lib/waterfall.js' charset='utf8'><script>
+it also can be a AMD module while using require.js
+
+NodeJS
+
+Install for Node.js using npm
+
+    $ npm install fetch-waterfall
+
+Require module use `require`
+    
+    const waterfall = require('fetch-waterfall)
+
 
 ## API
 waterfall(config)
-* `config` (`Object`) 配置对象
-### config 属性说明
+* `config` (`Object`) configure object
+### configure property details
 | Name       | Type         | Default-value     | Description
 |:-:     | :-:   | :-:     | :-:
-| `container`  | String \| HTMLElement| `''` | 瀑布流生效元素
-| `itemClass`  | String   | `'item'`    | 子项className
-| `cols`  | Number    | `1` | 瀑布流列数
-| `gutterWidth` | String \| Number  | `10`  | 子项水平间隔，可设置成像素或百分比，以`container`宽度为参考
-| `gutterHeight` | String \| Number | `10` | 子项竖直间隔，可设置成像素或百分比，以`container`宽度为参考
-| `gutterType` | String | `space-between`   | 水平间隔空白的类型，`space-around`，`space-between`
-| `preloadImage` | Boolean | `false` | 是否需要进行图片预加载处理
-| `defaultImage` | String | `undefined`    | 图片加载失败的替换图片路径，当`preloadImage` 为 `true` 时生效
-| `preloadPercent` | Function | `function (state) {}` | 图片预加载过程中的调用函数，参数 `state` 为调用信息
-| `preloadComplete` | Function | `function (promise) {}` | 图片预加载完成的回调函数，参数 `promise` 为 Promise 对象
-| `path` | Function \| String | `undefined` | `request` 请求地址，当为函数时，返回字符串，暂时只支持 `GET` 方式请求，使用 [`fetch API`](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API) 发起请求
-| `maxPage` | String | `undefined` | `request` 请求的最大次数
-| `template` | String \| HTMLElement | `'no referering templates'` | 瀑布流子项的解析模板，见下例 [template](#template)
-| `callbacks` | Object | `{ loadingStart: fn, loadingFinished: fn, loadingError: fn }` | `request` 请求的回调情况，见下面代码
+| `container`  | String \| HTMLElement| `''` | container element
+| `itemClass`  | String   | `'item'`    | item's className
+| `cols`  | Number    | `1` |  Waterfall effections columns
+| `gutterWidth` | String \| Number  | `10`  | the gaps of horizonta with pixel or percentage unit refering to `container` width
+| `gutterHeight` | String \| Number | `10` | the gaps of verticle with pixel or percentage unit refering to `container` width
+| `gutterType` | String | `space-between`   | gaps types，`space-around`，`space-between`
+| `preloadImage` | Boolean | `false` | if need images preload(default to false)
+| `defaultImage` | String | `undefined`    | the replace image url when target image loads failly(it effects when `preloadImage` is `true`)
+| `preloadPercent` | Function | `function (state) {}` | images preload function，payload `state`
+| `preloadComplete` | Function | `function (promise) {}` | images loaded calllback function, argument `promise` is a Promise Object
+| `path` | Function \| String | `undefined` | `request` request url, when it is a function which return a string. it only supports the method `GET` request, it uses [`fetch API`](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API) to request
+| `maxPage` | String | `undefined` | `request` the max number of request
+| `template` | String \| HTMLElement | `'no referering templates'` | the Waterfall items rendering template, as follows [template](#template)
+| `callbacks` | Object | `{ loadingStart: fn, loadingFinished: fn, loadingError: fn }` | `request` request callback function, see as follows
 
-`config.callbacks` 属性说明
+`config.callbacks` details
 
         callbacks: {
             /**
-             *   fetch 请求开始前回调函数
+             *  the begining function of fetch request 
              */
             loadingStart: function () {},
 
             /**
-             *  fetch 请求结束回调函数
-             * @param {Object} res - 请求返回结果信息
+             *  the end function of fetch request
+             * @param {Object} res - return response
              */
             loadingFinished: function (res) {
                 console.log(res)
             },
 
             /**
-             *  fetch 请求失败回调函数
-             * @param {Object} error - 请求错误信息
+             *  fetch request error function
+             * @param {Object} error - request error message
              */
             loadingError: function (error) {
                 console.log(error)
@@ -48,10 +67,10 @@ waterfall(config)
         }
 
 ## Template
-`waterfall` 实现了一个简单的模板渲染引擎，用于实现瀑布流的子项显示。
-使用双大括号 `{{}}` 包裹变量， `{{#}}` 包裹遍历的对象数组
+`fetch-waterfall` it supports a simple template rendering engine, in order to display the items in the waterfall
+it uses `{{}}` to contain variable, `{{#}}` contain the iterable array
 
-模板可使用以下DOM 结构表示，或直接使用字符串
+template use DOM elements or string straightly.
 
         <script type="text/template" id="waterfall-tpl">
             {{#results}}
@@ -63,7 +82,7 @@ waterfall(config)
             {{/results}}
         </script>
 
-数据模型为JSON对象
+a json data model
 
         {
             "results": [{
@@ -81,7 +100,7 @@ waterfall(config)
             }]
         }
 
-渲染之后的结果为
+after rendering result, as follows:
 
         <div class="item">
             <img src="./imgs/1.jpg" />
@@ -100,52 +119,53 @@ waterfall(config)
         </div>
 
 ## Examples
-* 在页面中引入 waterfall.js
-        
+* html structure
+
+        <div id="box"></div>
         <script src='./lib/waterfall.js'>
 
-* waterfall 使用方法
+* script
 
         waterfall({
-            container: '#box', // 瀑布流容器
-            itemClass: 'item', // 子项className
-            cols: 3, // 瀑布流列数
-            gutterWidth: 10, // 水平间隔
-            gutterHeight: 20, // 竖直间隔
-            gutterType: 'space-around', // 水平空白的类型，'space-between'，'space-around'，默认'space-between'
-            preloadImage: true, // 是否需要进行图片预加载
-            defaultImage: './imgs/default.jpg', // 图片加载失败替换图片
-            preloadPercent: function (state) { // 图片预加载过程中的调用函数
-                console.log('图片已加载' + state.current/state.total)
+            container: '#box', // container
+            itemClass: 'item', // item's className
+            cols: 3, // columns
+            gutterWidth: 10, // horizonal gutter
+            gutterHeight: 20, // vertical gutter
+            gutterType: 'space-around', // gutter type
+            preloadImage: true, // preload images
+            defaultImage: './imgs/default.jpg', // target image load error which to replace it
+            preloadPercent: function (state) { // images preloading
+                console.log('images has loaded ' + state.current/state.total)
                 console.log(state)
             },
-            preloadComplete: function (promise) { // 图片完全加载回调函数，返回promise对象
+            preloadComplete: function (promise) { // images loaded
                 promise.then(function (state) {
                     console.log(state)
                     document.getElementById('mask').style.display = 'none'
                 })
             },
-            path: function (curPage) { // fetch 请求地址
+            path: function (curPage) { // fetch request url
                 return './users.json?page=' + curPage
             },
-            maxPage: 6, // 请求的最大次数
-            template: document.getElementById('waterfall-tpl'), // 瀑布流每项的模板
-            callbacks: { // fetch 请求的回调情况
-                loadingStart: function () { // 请求开始函数
+            maxPage: 6, // request max count
+            template: document.getElementById('waterfall-tpl'), // tempalte
+            callbacks: {
+                loadingStart: function () {
                     console.log('ajax request ...')
                     document.getElementById('mask').style.display = 'block'
                 },
-                loadingFinished: function (res) { // 请求结束函数
+                loadingFinished: function (res) {
                     console.log('ajax response', res)               
                 },
-                loadingError: function (error) { // 请求失败函数
+                loadingError: function (error) {
                     console.log(error)
                 }
             }
         })
 
 
-[瀑布流 Demo](https://loshafee.github.io/waterfall/demos/waterfall.html)
+[waterfall Demo](https://loshafee.github.io/waterfall/demos/waterfall.html)
 
 ## License
 MIT
