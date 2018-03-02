@@ -19,7 +19,7 @@ waterfall(config)
 | `preloadComplete` | Function | `function (promise) {}` | 图片预加载完成的回调函数，参数 `promise` 为 Promise 对象
 | `path` | Function \| String | `undefined` | `request` 请求地址，当为函数时，返回字符串，暂时只支持 `GET` 方式请求，使用 [`fetch API`](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API) 发起请求
 | `maxPage` | String | `undefined` | `request` 请求的最大次数
-| `template` | String \| HTMLElement | `'no referering templates'` | 瀑布流子项的解析模板，见下例 [template](#Template)
+| `template` | String \| HTMLElement | `'no referering templates'` | 瀑布流子项的解析模板，见下例 [template](#template)
 | `callbacks` | Object | `{ loadingStart: fn, loadingFinished: fn, loadingError: fn }` | `request` 请求的回调情况，见下面代码
 
 `config.callbacks` 属性说明
