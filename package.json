@@ -1,6 +1,6 @@
 {
   "name": "fetch-waterfall",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Javascript waterfall effection with images preloader",
   "main": "index.js",
   "scripts": {
